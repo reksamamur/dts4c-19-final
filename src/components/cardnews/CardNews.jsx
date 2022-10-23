@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Grid from '@mui/material/Unstable_Grid2';
+import Typography from '@mui/material/Typography';
 const CardNews = ({ image, link, title, time }) => {
   const navigate = useNavigate();
 
@@ -11,8 +11,17 @@ const CardNews = ({ image, link, title, time }) => {
     
   <div onClick={openDetail}>
       
-      <img src={image} />
-      <p>{time}</p>
+      <img src={image} className="image"/>
+      
+    <Typography variant="h5" >{title}</Typography>
+      
+    <div class="card-text">
+                    <ul class="post-meta d-flex mb-0">
+                      <li className="post-date"><i className="uil uil-calendar-alt"></i><span>{time}</span></li>
+                      <li className="post-author"><i className="uil uil-user"></i><span>CNN Indonesia</span></li>
+                    </ul>
+                  </div>
+            
     </div>
 
     

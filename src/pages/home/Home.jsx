@@ -50,6 +50,32 @@ const Home = () => {
       time: "2 hour ago",
       source: "CNN Indonesia",
     },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    }, {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    }, {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
     
    
   ]);
@@ -57,7 +83,12 @@ const Home = () => {
 let theme = createTheme({
   typography: {
     fontFamily: 'Fairplay Display',
+    fontWeight: 700,
     subtitle1: {
+      fontSize: 24,
+      lineHeight: 2
+    },
+    subtitle2: {
       fontSize: 24,
       lineHeight: 2
     },
@@ -84,13 +115,13 @@ theme = responsiveFontSizes(theme);
 
 
   <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 4}}>
       {latestNews.map((item, index) => (
-        <Grid item xs={3}>
-     
+        
+        <Grid item xs={12} sm={6} md={3} key={index}>
         <CardNews key={index} image={item.img} link={item.link} title={item.title} time={item.time} source={item.source}/>
-  
-        </Grid>
+  </Grid>
+      
         ))}
        </Grid>
     </Box>

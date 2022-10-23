@@ -1,6 +1,6 @@
 const Footer = () => {
    return <footer>
-   <div>Footer</div>
+   <div>Copyright 2022 News Portal</div>
 </footer>
 
 }
