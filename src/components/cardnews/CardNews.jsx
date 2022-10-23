@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
 const CardNews = ({ image, link, title, time }) => {
   const navigate = useNavigate();
 
@@ -8,23 +8,24 @@ const CardNews = ({ image, link, title, time }) => {
   };
 
   return (
-    
-  <div onClick={openDetail}>
-      
-      <img src={image} className="image"/>
-      
-    <Typography variant="h5" >{title}</Typography>
-      
-    <div class="card-text">
-                    <ul class="post-meta d-flex mb-0">
-                      <li className="post-date"><i className="uil uil-calendar-alt"></i><span>{time}</span></li>
-                      <li className="post-author"><i className="uil uil-user"></i><span>CNN Indonesia</span></li>
-                    </ul>
-                  </div>
-            
-    </div>
+    <div onClick={openDetail} className="list-content">
+      <img src={image} className="image" />
 
-    
+      <Typography gutterBottom variant="h2" sx={{ paddingTop: "20px" }}>
+        {title}
+      </Typography>
+
+      <div className="card-text">
+        <ul className="post-meta">
+          <li>
+            <span>{time}</span>
+          </li>
+          <li>
+            <span>CNN Indonesia</span>
+          </li>
+        </ul>
+      </div>
+    </div>
   );
 };
 
