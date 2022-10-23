@@ -4,7 +4,7 @@ import Header from "./Header/Header"
 import Footer from "./Footer/Footer"
 const Layouts =({children}) => {
     return(
-<Container>
+<Container maxWidth="xl">
 
         <Header />
         <main>{children}</main>

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-
+import Grid from '@mui/material/Unstable_Grid2';
 const CardNews = ({ image, link, title, time }) => {
   const navigate = useNavigate();
 
@@ -8,11 +8,14 @@ const CardNews = ({ image, link, title, time }) => {
   };
 
   return (
-    <div onClick={openDetail}>
-      <h1>{title}</h1>
+    
+  <div onClick={openDetail}>
+      
       <img src={image} />
       <p>{time}</p>
     </div>
+
+    
   );
 };
 
