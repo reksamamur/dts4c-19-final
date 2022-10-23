@@ -3,24 +3,25 @@ import CardHotoTo from "../../components/cardnews/CardNews";
 import { useState } from "react";
 import CardHotTopic from "../../components/cardhottopics/CardHotTopics";
 import LinkButtonCategory from "../../components/linkbuttoncategory/LinkButtonCategory";
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import { ThemeCreate } from "../../utils/themeprovider/theme-create";
+import Typography from "@mui/material/Typography";
 import {
   createTheme,
   responsiveFontSizes,
   ThemeProvider,
-} from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
+} from "@mui/material/styles";
 const Home = () => {
+  const [selectedTheme, setSelectedTheme] = useState(ThemeCreate);
   const [hotTopic, setMockData] = useState([
     {
       img: "https://mui.com/static/images/cards/paella.jpg",
-      title: "Contoh Title",
+      title: "Massa tortor nibh nulla condimentum imperdiet scelerisque...",
       link: "contoh link ke detail",
       time: "2 hour ago",
       source: "CNN Indonesia",
-    }
-   
+    },
   ]);
 
   const [latestNews, setLatestData] = useState([
@@ -37,65 +38,88 @@ const Home = () => {
       link: "contoh link ke detail",
       time: "2 hour ago",
       source: "CNN Indonesia",
-    }, {
-      img: "https://mui.com/static/images/cards/paella.jpg",
-      title: "Contoh Title",
-      link: "contoh link ke detail",
-      time: "2 hour ago",
-      source: "CNN Indonesia",
-    }, {
+    },
+    {
       img: "https://mui.com/static/images/cards/paella.jpg",
       title: "Contoh Title",
       link: "contoh link ke detail",
       time: "2 hour ago",
       source: "CNN Indonesia",
     },
-    
-   
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
+    {
+      img: "https://mui.com/static/images/cards/paella.jpg",
+      title: "Contoh Title",
+      link: "contoh link ke detail",
+      time: "2 hour ago",
+      source: "CNN Indonesia",
+    },
   ]);
 
-let theme = createTheme({
-  typography: {
-    fontFamily: 'Fairplay Display',
-    subtitle1: {
-      fontSize: 24,
-      lineHeight: 2
-    },
-    body1: {
-      fontWeight: 500,
-    },
-    button: {
-      fontStyle: 'italic',
-    },
-  },
-});
-theme = responsiveFontSizes(theme);
   return (
-    <div id="hot-topic">
-      <ThemeProvider theme={theme}>
-      <Typography variant="h3">Hot Topic</Typography>
-      {
-      
-      hotTopic.map((item, index) => (
-        <CardHotTopic key={index} image={item.img} link={item.link} title={item.title} time={item.time} source={item.source}/>
-  ))
-  }
-    <Typography variant="h3">Latest News</Typography>
+    <ThemeProvider theme={ThemeCreate}>
+      <Box sx={{ paddingBottom: "30px" }}>
+        <Typography variant="title">Hot Topic</Typography>
 
+        <div id="hot-topic">
+          {hotTopic.map((item, index) => (
+            <CardHotTopic
+              key={index}
+              image={item.img}
+              link={item.link}
+              title={item.title}
+              time={item.time}
+              source={item.source}
+            />
+          ))}
+        </div>
+      </Box>
 
-  <Box sx={{ width: '100%' }}>
-      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-      {latestNews.map((item, index) => (
-        <Grid item xs={3}>
-     
-        <CardNews key={index} image={item.img} link={item.link} title={item.title} time={item.time} source={item.source}/>
-  
+      <Box sx={{ width: "100%", paddingBottom: "30px" }}>
+        <Typography variant="title">Latest News</Typography>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 4 }}>
+          {latestNews.map((item, index) => (
+            <Grid item xs={12} sm={6} md={3} key={index} mt={5}>
+              <CardNews
+                key={index}
+                image={item.img}
+                link={item.link}
+                title={item.title}
+                time={item.time}
+                source={item.source}
+              />
+            </Grid>
+          ))}
         </Grid>
-        ))}
-       </Grid>
-    </Box>
-      </ThemeProvider>
-    </div>
+      </Box>
+    </ThemeProvider>
   );
 };
 

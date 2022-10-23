@@ -1,8 +1,9 @@
 const Footer = () => {
-   return <footer>
-   <div>Footer</div>
-</footer>
-
-}
+  return (
+    <footer>
+      <div>Copyright 2022 News Portal</div>
+    </footer>
+  );
+};
 
 export default Footer;
