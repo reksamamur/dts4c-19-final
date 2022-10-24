@@ -1,7 +1,9 @@
 const Footer = () => {
   return (
-    <footer>
-      <div>Copyright 2022 News Portal</div>
+    <footer style={{
+      marginBottom: '10px'
+    }}>
+      <div>Copyright 2022 CNN News Portal</div>
     </footer>
   );
 };

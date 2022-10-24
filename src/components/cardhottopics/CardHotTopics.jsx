@@ -1,56 +1,90 @@
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
 
-import ButtonBase from "@mui/material/ButtonBase";
-const CardHotTopic = ({ image, link, title, time, source }) => {
+import moment from "moment-timezone";
+
+import {
+  Box,
+  CardMedia,
+  Card,
+  CardActionArea,
+  Typography,
+  Grid,
+} from "@mui/material";
+
+const CardHotTopic = ({
+  image,
+  link,
+  title,
+  time,
+  source,
+  content,
+  openDetail,
+}) => {
   const navigate = useNavigate();
+  const [timePost, setTimePost] = useState();
 
-  const openDetail = () => {
-    navigate(link);
+  const postTimes = () => {
+    let agos = moment(time).fromNow();
+    setTimePost(agos);
   };
 
+  useEffect(() => {
+    postTimes();
+  }, [timePost]);
+
   return (
-    <div onClick={openDetail}>
-      <Grid container spacing={4} sx={{ paddingTop: "30px" }}>
-        <Grid item xs={12} md={8}>
-          <div className="card">
-            <img alt={title} src={image} className="image" />
-            <div className="img-overlay">
-              <Typography variant="h1" gutterBottom>
-                {title}
+    <Card onClick={openDetail} elevation={0}>
+      <CardActionArea sx={{ padding: "10px" }}>
+        <Grid container spacing={4}>
+          <Grid item xs={12} md={8}>
+            <Box sx={{ position: "relative" }}>
+              <CardMedia component="img" className="image" image={image} />
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: 0,
+                  width: "100%",
+                  borderRadius: "0.4rem",
+                  background:
+                    "linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 69%)",
+                  color: "white",
+                  padding: "1.5rem",
+                }}
+              >
+                <Typography variant="h1" gutterBottom>
+                  {title}
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Box sx={{ display: "flex", gap: 2 }}>
+              <Typography variant="body1" gutterBottom>
+                {timePost}
               </Typography>
-              <div className="card-text">
-                <ul className="post-meta">
-                  <li>
-                    <span>{time}</span>
-                  </li>
-                  <li>
-                    <span>{source}</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+              <Typography variant="body1" gutterBottom>
+                CNN Indonesia
+              </Typography>
+            </Box>
+            <Typography
+              gutterBottom
+              variant="desc"
+              sx={{
+                overflow: "hidden",
+                textOverflow: "ellipsis",
+                display: "-webkit-box",
+                WebkitLineClamp: "4",
+                WebkitBoxOrient: "vertical",
+              }}
+            >
+              {content}
+            </Typography>
+          </Grid>
         </Grid>
-        <Grid item xs={12} md={4}>
-          <Typography gutterBottom variant="desc">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum
-            quam ducimus neque odit labore eos vero doloremque architecto
-            similique vitae. Fuga corporis beatae qui pariatur sit suscipit
-            aspernatur, quaerat quia!
-          </Typography>
-        </Grid>
-      </Grid>
-    </div>
+      </CardActionArea>
+    </Card>
   );
 };
 export default CardHotTopic;

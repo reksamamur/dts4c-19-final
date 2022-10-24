@@ -1,31 +1,58 @@
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Typography from "@mui/material/Typography";
-const CardNews = ({ image, link, title, time }) => {
-  const navigate = useNavigate();
 
-  const openDetail = () => {
-    navigate(link);
+import moment from "moment-timezone";
+
+import {
+  Box,
+  CardMedia,
+  Card,
+  CardActionArea,
+  Typography,
+  Grid,
+} from "@mui/material";
+
+const CardNews = ({ image, link, title, time, openDetail }) => {
+  const navigate = useNavigate();
+  const [timePost, setTimePost] = useState();
+
+  const postTimes = () => {
+    let agos = moment(time).fromNow();
+    setTimePost(agos);
   };
 
+  useEffect(() => {
+    postTimes();
+  }, [timePost]);
+
   return (
-    <div onClick={openDetail} className="list-content">
-      <img src={image} className="image" />
-
-      <Typography gutterBottom variant="h2" sx={{ paddingTop: "20px" }}>
-        {title}
-      </Typography>
-
-      <div className="card-text">
-        <ul className="post-meta">
-          <li>
-            <span>{time}</span>
-          </li>
-          <li>
-            <span>CNN Indonesia</span>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Card onClick={openDetail} elevation={0}>
+      <CardActionArea sx={{ padding: "10px" }}>
+        <CardMedia component="img" className="image" image={image} />
+        <Typography
+          gutterBottom
+          variant="h2"
+          sx={{
+            paddingTop: "10px",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            WebkitLineClamp: "2",
+            WebkitBoxOrient: "vertical",
+          }}
+        >
+          {title}
+        </Typography>
+        <Box sx={{ display: "flex", gap: 2 }}>
+          <Typography variant="body1" gutterBottom>
+            {timePost}
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            CNN Indonesia
+          </Typography>
+        </Box>
+      </CardActionArea>
+    </Card>
   );
 };
 
