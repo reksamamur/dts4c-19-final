@@ -87,3 +87,22 @@ font-weight: 700;
       padding: 0 10px;
     }
   }
+  div.label{
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: solid 1px;
+    border-radius: 6px;
+  }
+  .card-text {
+    &.flex {
+      display: flex;
+      justify-content:space-between
+    }
+  
+  }
+  .social-icon ul li{
+    padding-right: 10px;
+    display: inline;
+  }
+
+  

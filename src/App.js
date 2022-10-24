@@ -8,7 +8,8 @@ import NotFound from "./pages/not-found/NotFoundPage";
 
 import Home from "./pages/home/Home";
 import Search from "./pages/search/Search";
-
+import Detail from "./pages/detail/Detail";
+import Category from "./pages/category/Category";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 
@@ -27,6 +28,8 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="/search" element={<Search />} />
+            <Route path="/detail" element={<Detail />} />
+            <Route path="/category" element={<Category />} />
             <Route path="/tester" element={<Tester />} />
 
             <Route
