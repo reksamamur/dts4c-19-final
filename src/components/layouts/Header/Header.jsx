@@ -1,10 +1,12 @@
 import SearchIcon from "@mui/icons-material/Search";
+
 import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import StyledMenu from "../../dropdownmenu/DropDownMenu";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
 import TextField from "@mui/material/TextField";
 import FormControl, { useFormControl } from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -23,6 +25,18 @@ const Header = () => {
 
   const handleToggle = () => {
     setOpenSearch(!openSearch);
+  };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 700,
+    bgcolor: "background.paper",
+
+    boxShadow: 24,
+    borderRadius: "4px",
+    p: 0,
   };
 
   return (
@@ -55,17 +69,18 @@ const Header = () => {
           <MenuItem onClick={handleClose}>Bookmark</MenuItem>
           <MenuItem onClick={handleClose}>Sign Out</MenuItem>
         </StyledMenu>
-        <Backdrop
-          sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        <Modal
           open={openSearch}
-          onClick={handleClose}
+          onClose={handleClose}
+          aria-labelledby="parent-modal-title"
+          aria-describedby="parent-modal-description"
         >
-          <Box component="form" noValidate autoComplete="off">
-            <FormControl sx={{ width: "25ch" }}>
+          <Box sx={{ ...style, width: "50%" }}>
+            <FormControl sx={{ width: "100%" }}>
               <OutlinedInput placeholder="Search" />
             </FormControl>
           </Box>
-        </Backdrop>
+        </Modal>
       </div>
     </header>
   );

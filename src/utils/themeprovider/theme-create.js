@@ -9,8 +9,18 @@ let theme = createTheme({
       fontSize: "48px",
     },
 
+    subtitle: {
+      fontSize: "36px",
+      fontFamily: "Roboto",
+      fontWeight: 700,
+    },
     subtitle2: {
-      fontSize: "32",
+      fontSize: "16px",
+      fontFamily: "Roboto",
+    },
+    subtitle3: {
+      fontSize: "24px",
+      fontFamily: "Roboto",
     },
 
     h1: {
