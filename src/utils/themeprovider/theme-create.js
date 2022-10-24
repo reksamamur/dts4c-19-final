@@ -22,7 +22,10 @@ let theme = createTheme({
       fontSize: "24px",
       fontFamily: "Roboto",
     },
-
+    body1: {
+      fontSize: "16px",
+      fontFamily: "Roboto",
+    },
     h1: {
       fontSize: "32px",
       lineHeight: 1.5,
@@ -37,7 +40,8 @@ let theme = createTheme({
       lineHeight: 1.7,
     },
     button: {
-      fontStyle: "italic",
+      fontFamily: "Roboto",
+      textDecoration: "none",
     },
   },
 });

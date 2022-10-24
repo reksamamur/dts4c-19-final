@@ -4,7 +4,7 @@ import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
 import Box from "@mui/material/Box";
-const CardDetails = ({ image, link, title, time }) => {
+const CardDetails = ({ image, link, title, time, source }) => {
   const navigate = useNavigate();
 
   const openDetail = () => {
@@ -12,12 +12,8 @@ const CardDetails = ({ image, link, title, time }) => {
   };
 
   return (
-    <div onClick={openDetail} className="list-content">
+    <Box>
       <img src={image} className="image" style={{ maxHeight: "500px" }} />
-
-      <Typography gutterBottom variant="h2" sx={{ paddingTop: "20px" }}>
-        {title}
-      </Typography>
 
       <div className="card-text flex">
         <ul className="post-meta">
@@ -47,7 +43,7 @@ const CardDetails = ({ image, link, title, time }) => {
         harum dolor cumque debitis esse suscipit delectus deserunt ex aut
         laboriosam, nostrum eum a culpa, nam libero. Vero, ad ratione.
       </Box>
-    </div>
+    </Box>
   );
 };
 
