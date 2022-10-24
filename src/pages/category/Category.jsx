@@ -12,7 +12,7 @@ import {
   responsiveFontSizes,
   ThemeProvider,
 } from "@mui/material/styles";
-const Search = () => {
+const Category = () => {
   const [selectedTheme, setSelectedTheme] = useState(ThemeCreate);
   const [hotTopic, setMockData] = useState([
     {
@@ -86,13 +86,10 @@ const Search = () => {
   return (
     <ThemeProvider theme={ThemeCreate}>
       <Box sx={{ paddingBottom: "30px" }}>
-        <Typography variant="subtitle2">Search for:</Typography>
-        <div className="label">
-          <Typography variant="subtitle3">News</Typography>
-        </div>
+        <Typography variant="subtitle">Category</Typography>
       </Box>
       <Box sx={{ width: "100%", paddingBottom: "30px" }}>
-        <Typography variant="title">Search Result</Typography>
+        <Typography variant="title">National</Typography>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 4 }}>
           {latestNews.map((item, index) => (
             <Grid item xs={12} sm={6} md={3} key={index} mt={5}>
@@ -112,4 +109,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default Category;
