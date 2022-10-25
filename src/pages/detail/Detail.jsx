@@ -21,11 +21,14 @@ import {
   Link,
   Snackbar,
   CircularProgress,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 
 import StarOutlineIcon from "@mui/icons-material/StarOutline";
 import ShareIcon from "@mui/icons-material/Share";
 import ThumbUpOffAltIcon from "@mui/icons-material/ThumbUpOffAlt";
+import InsertLinkIcon from "@mui/icons-material/InsertLink";
 import { Star } from "@mui/icons-material";
 
 import { ThemeProvider } from "@mui/material/styles";
@@ -33,7 +36,14 @@ import { ThemeCreate } from "../../utils/themeprovider/theme-create";
 
 import moment from "moment-timezone";
 import debounce from "lodash.debounce";
-
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  TwitterIcon,
+  WhatsappIcon,
+} from "react-share";
 const DetailComp = ({
   bookmarkState,
   image,
@@ -46,7 +56,7 @@ const DetailComp = ({
   share,
   vote,
   progress,
-  voteState
+  voteState,
 }) => {
   const [timePost, setTimePost] = useState();
 
@@ -58,6 +68,15 @@ const DetailComp = ({
   useEffect(() => {
     postTimes();
   }, [timePost]);
+
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openShare = anchorEl;
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <ThemeProvider theme={ThemeCreate}>
@@ -83,14 +102,65 @@ const DetailComp = ({
               <StarOutlineIcon />
             </IconButton>
           )}
-          <IconButton onClick={share}>
+          <IconButton onClick={handleClick}>
             <ShareIcon />
           </IconButton>
           <IconButton onClick={vote}>
             <ThumbUpOffAltIcon />
           </IconButton>
-          {voteState ? <CircularProgress variant="determinate" value={progress} /> : <></>}
-          
+          {voteState ? (
+            <CircularProgress variant="determinate" value={progress} />
+          ) : (
+            <></>
+          )}
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={openShare}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem onClick={handleClose}>
+              <FacebookShareButton
+                url={source}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <FacebookIcon size={32} round /> &nbsp;Facebook
+              </FacebookShareButton>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <TwitterShareButton
+                url={source}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <TwitterIcon size={32} round /> &nbsp;Twitter
+              </TwitterShareButton>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <WhatsappShareButton
+                url={source}
+                style={{ display: "flex", alignItems: "center" }}
+              >
+                <WhatsappIcon size={32} round />
+                &nbsp;WhatsApp
+              </WhatsappShareButton>
+            </MenuItem>
+            <MenuItem onClick={share}>
+              <InsertLinkIcon
+                size={32}
+                style={{
+                  background: "#b50a0a",
+                  color: " #fff",
+                  borderRadius: "50%",
+                  width: "32px",
+                  height: "32px",
+                }}
+              />
+              &nbsp;Copy Link
+            </MenuItem>
+          </Menu>
         </Box>
 
         <Box sx={{ display: "flex", gap: 2, paddingTop: "30px" }}>
@@ -115,7 +185,11 @@ const DetailComp = ({
 const Detail = () => {
   const { user } = useAuth();
   const [snack, setSnack] = useState(false);
-
+  const [anchorEl, setAnchorEl] = useState(null);
+  const openShare = anchorEl;
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
   const navigate = useNavigate();
   const searchParams = useParams();
   const { listDetailNews } = useSelector((store) => store.latestNews);
