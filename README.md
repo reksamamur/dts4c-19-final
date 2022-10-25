@@ -1,19 +1,33 @@
-# DTS REA4 Final Project
+# DTS4C-19-FINAL
 
-Ketentuan lengkap bisa dilihat di [Final Project Guidelines](https://docs.google.com/document/d/122KyWNQ4xxU4aFwWbM4vIfH7LM4AH2CZEZa3YsEHjCk). 
+Project ini adalah portal berita dari situs berita CNN News
 
-## Daftar pair
+##Fitur
 
-Tugas dikerjakan secara berpasangan, untuk daftar kelompok bisa dilihat pada masing-masing Classroom atau Discord Class.
+- Search
 
-## Fork and Clone
+Search kontent portal menggunakan kata kunci
 
-Mohon perwakilan dari pair bisa melakukan fork repo ini dan clone, untuk repositori yang di fork menggunakan penamaan:
+- Bookmark
 
-`dts4[a/b/c]-[nomor pair]-final`
+Bookmark berfungsi untuk menandai konten berita kedalam akun. konten yang ditandai dapat dengan cepat dan akan diarahkan langsung ke link konten tanpa harus menelusuri atau mencarinya. Hanya user yang login yang dapat menggunakan fitur bookmark.
 
-Contoh: `dts4a-01-final`
+- Vote
 
-## Branching, commit
+Vote akan menambahkan counter kedalam berita yang diklik. Artikel dengan vote terbanyak akan tampil di hot topic. Hanya user yang login yang dapat menggunakan fitur Vote.
 
-Branch dapat sesuai dengan kebutuhan dan kesepakatan bersama dalam pair, namun hasil akhirnya harus di merge ke branch `main` dan di push ke Github. Pastikan hasil akhir kode sudah ter-push!
+- Form Register dan Login
+
+User dapat registrasi dan login akun untuk akses beberapa fitur tertentu
+
+- Filter artikel berdasarkan kategori
+- Social Share
+
+Digunakan untuk share artikel ke media sosial (Facebook, Twitter, WhatsApp, Copy link)
+
+##Demo
+Video :
+Link : https://dts4c-19-final-production.up.railway.app/
+
+##Referensi
+API : https://github.com/satyawikananda/berita-indo-api
