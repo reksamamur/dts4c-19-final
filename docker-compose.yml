@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: dts4c-19-final-prod
+    image: dts4c-19-final-prod
+    build:
+      context: .
+      target: production
