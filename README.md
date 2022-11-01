@@ -6,7 +6,7 @@ Project ini adalah portal berita dari situs berita CNN News
 ![2022-10-25 17-04-46_Trim_1](https://user-images.githubusercontent.com/20721518/197762183-19d83459-13b9-43c8-b489-26dfa961759c.gif)
 [link gif](https://gfycat.com/weepytallasianwaterbuffalo)
 
-### [Demo](https://dts4c-19-final-production.up.railway.app/)
+### [Demo](https://dts4c-19-final.vercel.app/)
 
 ### Fitur
 #### Search
